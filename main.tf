@@ -1,18 +1,24 @@
-module "acm" {
-  source  = "terraform-aws-modules/acm/aws"
-  version = "~> 3.2.0"
 
-  domain_name = "${var.cluster_name}.${data.aws_route53_zone.opensearch.name}"
-  zone_id     = data.aws_route53_zone.opensearch.id
-
-  wait_for_validation = true
-
-  tags = var.tags
-}
 
 resource "aws_iam_service_linked_role" "es" {
   count            = var.create_service_role ? 1 : 0
   aws_service_name = "es.amazonaws.com"
+}
+
+resource "aws_security_group" "es" {
+  name        = "${var.vpc}-elasticsearch-${var.cluster_name}"
+  description = "Managed by Terraform"
+  vpc_id      = data.aws_vpc.selected.id
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      data.aws_vpc.selected.cidr_block,
+    ]
+  }
 }
 
 resource "aws_elasticsearch_domain" "opensearch" {
@@ -42,13 +48,19 @@ resource "aws_elasticsearch_domain" "opensearch" {
     }
   }
 
+  # vpc_options {
+  #   subnet_ids = data.aws_subnet_ids.selected.ids
+   
+
+  #   security_group_ids = [aws_security_group.es.id]
+  # }
   advanced_security_options {
     enabled                        = true
     internal_user_database_enabled = false
 
-    master_user_options {
-      master_user_arn = (var.master_user_arn != "") ? var.master_user_arn : data.aws_caller_identity.current.arn
-    }
+    # master_user_options {
+    #   master_user_arn = (var.master_user_arn != "") ? var.master_user_arn : data.aws_caller_identity.current.arn
+    # }
   }
 
   domain_endpoint_options {
@@ -57,7 +69,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
 
     custom_endpoint_enabled         = true
     custom_endpoint                 = "${var.cluster_name}.${data.aws_route53_zone.opensearch.name}"
-    custom_endpoint_certificate_arn = module.acm.acm_certificate_arn
+    custom_endpoint_certificate_arn = data.aws_acm_certificate.domain_host.arn
   }
 
   node_to_node_encryption {

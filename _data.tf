@@ -6,6 +6,20 @@ data "aws_route53_zone" "opensearch" {
   name = var.cluster_domain
 }
 
+data "aws_vpc" "selected" {
+  tags = {
+    Name = var.vpc
+  }
+}
+
+data "aws_subnet_ids" "selected" {
+  vpc_id = data.aws_vpc.selected.id
+
+  tags = {
+    Scheme = "private"
+  }
+}
+
 data "aws_iam_policy_document" "access_policy" {
   statement {
     actions   = ["es:*"]
@@ -16,4 +30,9 @@ data "aws_iam_policy_document" "access_policy" {
       identifiers = ["*"]
     }
   }
+}
+
+data "aws_acm_certificate" "domain_host" {
+  domain   = var.cluster_domain
+  statuses = ["ISSUED"]
 }

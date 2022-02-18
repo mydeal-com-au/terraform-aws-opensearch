@@ -15,6 +15,12 @@ variable "cluster_domain" {
   type        = string
 }
 
+variable "vpc" {
+  description = "VPC"
+  type        = string
+  
+}
+
 variable "create_service_role" {
   description = "Indicates whether to create the service-linked role. See https://docs.aws.amazon.com/opensearch-service/latest/developerguide/slr.html"
   type        = bool

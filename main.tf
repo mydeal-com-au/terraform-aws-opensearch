@@ -6,7 +6,7 @@ resource "aws_iam_service_linked_role" "es" {
 }
 
 resource "aws_security_group" "es" {
-  name        = "${var.vpc}-elasticsearch-${var.cluster_name}"
+  name        = "${var.vpc_id}-elasticsearch-${var.cluster_name}"
   description = "Managed by Terraform"
   vpc_id      = data.aws_vpc.selected.id
 

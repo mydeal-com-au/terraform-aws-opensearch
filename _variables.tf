@@ -15,7 +15,7 @@ variable "cluster_domain" {
   type        = string
 }
 
-variable "vpc" {
+variable "vpc_id" {
   description = "VPC"
   type        = string
   

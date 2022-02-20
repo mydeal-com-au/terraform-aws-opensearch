@@ -7,9 +7,7 @@ data "aws_route53_zone" "opensearch" {
 }
 
 data "aws_vpc" "selected" {
-  tags = {
-    Name = var.vpc
-  }
+  id = var.vpc_id
 }
 
 data "aws_subnet_ids" "selected" {

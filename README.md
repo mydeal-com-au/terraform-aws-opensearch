@@ -51,7 +51,7 @@
 | saml\_session\_timeout | Duration of a session in minutes after a user logs in. Default is 60. Maximum value is 1,440. | `number` | `60` | no |
 | saml\_subject\_key | Element of the SAML assertion to use for username. | `string` | `"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"` | no |
 | tags | A map of tags to add to all resources. | `map(string)` | `{}` | no |
-| vpc | VPC | `string` | n/a | yes |
+| vpc\_id | VPC | `string` | n/a | yes |
 | warm\_instance\_count | The number of dedicated warm nodes in the cluster. | `number` | `3` | no |
 | warm\_instance\_enabled | Indicates whether ultrawarm nodes are enabled for the cluster. | `bool` | `true` | no |
 | warm\_instance\_type | The type of EC2 instances to run for each warm node. A list of available instance types can you find at https://aws.amazon.com/en/elasticsearch-service/pricing/#UltraWarm_pricing | `string` | `"ultrawarm1.large.elasticsearch"` | no |

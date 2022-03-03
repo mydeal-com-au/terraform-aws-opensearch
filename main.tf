@@ -48,12 +48,15 @@ resource "aws_elasticsearch_domain" "opensearch" {
     }
   }
 
-  # vpc_options {
-  #   subnet_ids = data.aws_subnet_ids.selected.ids
-   
+  dynamic "vpc_options" {
+    for_each = (length(var.subnets_id) > 1) ? [1] : []
 
-  #   security_group_ids = [aws_security_group.es.id]
-  # }
+    content {
+        subnet_ids = var.subnets_id
+        security_group_ids = [aws_security_group.es.id]
+      }
+  }
+
   advanced_security_options {
     enabled                        = true
     internal_user_database_enabled = false

@@ -18,7 +18,13 @@ variable "cluster_domain" {
 variable "vpc_id" {
   description = "VPC"
   type        = string
-  
+
+}
+
+variable "subnets_id" {
+  description = "Subnets"
+  type        = list(string)
+
 }
 
 variable "create_service_role" {

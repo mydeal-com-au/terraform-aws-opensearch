@@ -52,9 +52,9 @@ resource "aws_elasticsearch_domain" "opensearch" {
     for_each = (length(var.subnets_id) > 1) ? [1] : []
 
     content {
-        subnet_ids = var.subnets_id
-        security_group_ids = [aws_security_group.es.id]
-      }
+      subnet_ids         = var.subnets_id
+      security_group_ids = [aws_security_group.es.id]
+    }
   }
 
   advanced_security_options {

@@ -49,11 +49,6 @@ variable "master_instance_type" {
   description = "The type of EC2 instances to run for each master node. A list of available instance types can you find at https://aws.amazon.com/en/opensearch-service/pricing/#On-Demand_instance_pricing"
   type        = string
   default     = "r6gd.large.elasticsearch"
-
-  validation {
-    condition     = can(regex("^[m3|r3|i3|i2|r6gd]", var.master_instance_type))
-    error_message = "The EC2 master_instance_type must provide a SSD or NVMe-based local storage."
-  }
 }
 
 variable "master_instance_count" {
@@ -66,11 +61,6 @@ variable "hot_instance_type" {
   description = "The type of EC2 instances to run for each hot node. A list of available instance types can you find at https://aws.amazon.com/en/opensearch-service/pricing/#On-Demand_instance_pricing"
   type        = string
   default     = "r6gd.4xlarge.elasticsearch"
-
-  validation {
-    condition     = can(regex("^[m3|r3|i3|i2|r6gd]", var.hot_instance_type))
-    error_message = "The EC2 hot_instance_type must provide a SSD or NVMe-based local storage."
-  }
 }
 
 variable "hot_instance_count" {

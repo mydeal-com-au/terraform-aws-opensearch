@@ -84,6 +84,13 @@ resource "aws_elasticsearch_domain" "opensearch" {
     kms_key_id = var.encrypt_kms_key_id
   }
 
+  ebs_options {
+    ebs_enabled = var.ebs_enabled
+    volume_size = var.ebs_volume_size
+    volume_type = var.ebs_volume_type
+    iops = var.ebs_iops
+  }
+
   tags = var.tags
 
   depends_on = [aws_iam_service_linked_role.es]

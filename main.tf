@@ -71,7 +71,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
     tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
 
     custom_endpoint_enabled         = true
-    custom_endpoint                 = "${var.cluster_name}.${data.aws_route53_zone.opensearch.name}"
+    custom_endpoint                 = "${var.cluster_hostname}.${data.aws_route53_zone.opensearch.name}"
     custom_endpoint_certificate_arn = data.aws_acm_certificate.domain_host.arn
   }
 

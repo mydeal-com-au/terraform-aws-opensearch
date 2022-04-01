@@ -15,6 +15,11 @@ variable "cluster_domain" {
   type        = string
 }
 
+variable "cluster_hostname" {
+  description = "The hostname name of the OpenSearch cluster."
+  type        = string
+}
+
 variable "vpc_id" {
   description = "VPC"
   type        = string

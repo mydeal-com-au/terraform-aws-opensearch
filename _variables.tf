@@ -7,7 +7,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   description = "The version of OpenSearch to deploy."
   type        = string
-  default     = "1.0"
+  default     = "1.1"
 }
 
 variable "cluster_domain" {
@@ -59,25 +59,25 @@ variable "master_instance_type" {
 variable "master_instance_count" {
   description = "The number of dedicated master nodes in the cluster."
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "hot_instance_type" {
   description = "The type of EC2 instances to run for each hot node. A list of available instance types can you find at https://aws.amazon.com/en/opensearch-service/pricing/#On-Demand_instance_pricing"
   type        = string
-  default     = "r6gd.4xlarge.elasticsearch"
+  default     = "r6gd.large.elasticsearch"
 }
 
 variable "hot_instance_count" {
   description = "The number of dedicated hot nodes in the cluster."
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "warm_instance_enabled" {
   description = "Indicates whether ultrawarm nodes are enabled for the cluster."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "warm_instance_type" {
@@ -89,13 +89,13 @@ variable "warm_instance_type" {
 variable "warm_instance_count" {
   description = "The number of dedicated warm nodes in the cluster."
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "availability_zones" {
   description = "The number of availability zones for the OpenSearch cluster. Valid values: 1, 2 or 3."
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "encrypt_kms_key_id" {

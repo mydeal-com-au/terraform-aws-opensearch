@@ -114,7 +114,7 @@ resource "aws_elasticsearch_domain_saml_options" "opensearch" {
 
 resource "aws_route53_record" "opensearch" {
   zone_id = data.aws_route53_zone.opensearch.id
-  name    = var.cluster_name
+  name    = var.cluster_hostname
   type    = "CNAME"
   ttl     = "60"
 

@@ -58,6 +58,5 @@ jobs:
           AWS_REGION: 'us-east-1'
           TF_WARN_OUTPUT_ERRORS: 1
         run: |
-          sed -i -e 's/>=/=/' -e 's/ \(\d\+\.\d\+\)"/ \1.0"/' versions.tf
           terraform init
           terraform validate

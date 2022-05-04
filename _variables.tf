@@ -107,13 +107,13 @@ variable "encrypt_kms_key_id" {
 variable "saml_subject_key" {
   description = "Element of the SAML assertion to use for username."
   type        = string
-  default     = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+  default     = ""
 }
 
 variable "saml_roles_key" {
   description = "Element of the SAML assertion to use for backend roles."
   type        = string
-  default     = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+  default     = ""
 }
 
 variable "saml_entity_id" {
@@ -130,6 +130,18 @@ variable "saml_session_timeout" {
   description = "Duration of a session in minutes after a user logs in. Default is 60. Maximum value is 1,440."
   type        = number
   default     = 60
+}
+
+variable "saml_master_backend_role" {
+  description = "SAML Master backend role."
+  type        = string
+  default     = ""
+}
+
+variable "saml_master_user_name" {
+  description = "SAML master user name"
+  type        = string
+  default     = ""
 }
 
 variable "index_templates" {

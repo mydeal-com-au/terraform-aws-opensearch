@@ -49,7 +49,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
   }
 
   dynamic "vpc_options" {
-    for_each = (length(var.subnets_id) > 1) ? [1] : []
+    for_each = (length(var.subnets_id) >= 1) ? [1] : []
 
     content {
       subnet_ids         = var.subnets_id
@@ -104,6 +104,8 @@ resource "aws_elasticsearch_domain_saml_options" "opensearch" {
     subject_key             = var.saml_subject_key
     roles_key               = var.saml_roles_key
     session_timeout_minutes = var.saml_session_timeout
+    master_backend_role     = var.saml_master_backend_role
+    master_user_name        = var.saml_master_user_name
 
     idp {
       entity_id        = var.saml_entity_id

@@ -1,9 +1,7 @@
-# terraform-aws-template
+# terraform-aws-opensearch
 
 [![Lint Status](https://github.com/DNXLabs/terraform-aws-template/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-template/actions)
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-template)](https://github.com/DNXLabs/terraform-aws-template/blob/master/LICENSE)
-
-<!--- BEGIN_TF_DOCS --->
 
 # AWS OpenSearch Terraform Module
 
@@ -75,7 +73,7 @@ Here is a working example of using this Terraform module:
 
 - [Complete](https://github.com/idealo/terraform-aws-opensearch/tree/main/examples/complete) - Create an AWS OpenSearch cluster with all necessary resources.
 
-<!-- BEGIN_TF_DOCS -->
+<!--- BEGIN_TF_DOCS --->
 ## Requirements
 
 | Name | Version |

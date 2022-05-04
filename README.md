@@ -148,7 +148,8 @@ Here is a working example of using this Terraform module:
 | <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | The name of the OpenSearch cluster. |
 | <a name="output_cluster_version"></a> [cluster\_version](#output\_cluster\_version) | The version of the OpenSearch cluster. |
 | <a name="output_kibana_endpoint"></a> [kibana\_endpoint](#output\_kibana\_endpoint) | The endpoint URL of Kibana. |
-<!-- END_TF_DOCS -->
+
+<!--- END_TF_DOCS --->
 
 ## License
 

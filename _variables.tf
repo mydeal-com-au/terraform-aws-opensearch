@@ -211,21 +211,21 @@ variable "tags" {
 }
 
 variable "ebs_enabled" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "ebs_volume_size" {
-  type = number
+  type    = number
   default = 10
 }
 
 variable "ebs_volume_type" {
-  type = string
+  type    = string
   default = null
 }
 
 variable "ebs_iops" {
-  type = number
+  type    = number
   default = null
 }

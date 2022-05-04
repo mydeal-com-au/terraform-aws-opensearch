@@ -88,7 +88,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
     ebs_enabled = var.ebs_enabled
     volume_size = var.ebs_volume_size
     volume_type = var.ebs_volume_type
-    iops = var.ebs_iops
+    iops        = var.ebs_iops
   }
 
   tags = var.tags

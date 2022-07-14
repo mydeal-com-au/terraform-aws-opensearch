@@ -88,6 +88,7 @@ Here is a working example of using this Terraform module:
 |------|---------|
 | aws | = 3.74.1 |
 
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |

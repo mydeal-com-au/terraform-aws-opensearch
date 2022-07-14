@@ -105,20 +105,13 @@ Here is a working example of using this Terraform module:
 | encrypt\_kms\_key\_id | The KMS key ID to encrypt the OpenSearch cluster with. If not specified, then it defaults to using the AWS OpenSearch Service KMS key. | `string` | `""` | no |
 | hot\_instance\_count | The number of dedicated hot nodes in the cluster. | `number` | `1` | no |
 | hot\_instance\_type | The type of EC2 instances to run for each hot node. A list of available instance types can you find at https://aws.amazon.com/en/opensearch-service/pricing/#On-Demand_instance_pricing | `string` | `"r6gd.large.elasticsearch"` | no |
-| index\_files | A set of all index files to create. | `set(string)` | `[]` | no |
-| index\_template\_files | A set of all index template files to create. | `set(string)` | `[]` | no |
-| index\_templates | A map of all index templates to create. | `map(any)` | `{}` | no |
-| indices | A map of all indices to create. | `map(any)` | `{}` | no |
-| ism\_policies | A map of all ISM policies to create. | `map(any)` | `{}` | no |
-| ism\_policy\_files | A set of all ISM policy files to create. | `set(string)` | `[]` | no |
+| log\_publishing\_options\_cloudwatch\_log\_group\_arn | n/a | `string` | `null` | no |
+| log\_publishing\_options\_enable | n/a | `bool` | `null` | no |
+| log\_publishing\_options\_log\_type | n/a | `string` | `null` | no |
 | master\_instance\_count | The number of dedicated master nodes in the cluster. | `number` | `1` | no |
 | master\_instance\_enabled | Indicates whether dedicated master nodes are enabled for the cluster. | `bool` | `true` | no |
 | master\_instance\_type | The type of EC2 instances to run for each master node. A list of available instance types can you find at https://aws.amazon.com/en/opensearch-service/pricing/#On-Demand_instance_pricing | `string` | `"r6gd.large.elasticsearch"` | no |
 | master\_user\_arn | The ARN for the master user of the cluster. If not specified, then it defaults to using the IAM user that is making the request. | `string` | `""` | no |
-| role\_files | A set of all role files to create. | `set(string)` | `[]` | no |
-| role\_mapping\_files | A set of all role mapping files to create. | `set(string)` | `[]` | no |
-| role\_mappings | A map of all role mappings to create. | `map(any)` | `{}` | no |
-| roles | A map of all roles to create. | `map(any)` | `{}` | no |
 | saml\_entity\_id | The unique Entity ID of the application in SAML Identity Provider. | `string` | n/a | yes |
 | saml\_master\_backend\_role | SAML Master backend role. | `string` | `""` | no |
 | saml\_master\_user\_name | SAML master user name | `string` | `""` | no |

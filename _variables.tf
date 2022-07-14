@@ -144,66 +144,6 @@ variable "saml_master_user_name" {
   default     = ""
 }
 
-variable "index_templates" {
-  description = "A map of all index templates to create."
-  type        = map(any)
-  default     = {}
-}
-
-variable "index_template_files" {
-  description = "A set of all index template files to create."
-  type        = set(string)
-  default     = []
-}
-
-variable "ism_policies" {
-  description = "A map of all ISM policies to create."
-  type        = map(any)
-  default     = {}
-}
-
-variable "ism_policy_files" {
-  description = "A set of all ISM policy files to create."
-  type        = set(string)
-  default     = []
-}
-
-variable "indices" {
-  description = "A map of all indices to create."
-  type        = map(any)
-  default     = {}
-}
-
-variable "index_files" {
-  description = "A set of all index files to create."
-  type        = set(string)
-  default     = []
-}
-
-variable "roles" {
-  description = "A map of all roles to create."
-  type        = map(any)
-  default     = {}
-}
-
-variable "role_files" {
-  description = "A set of all role files to create."
-  type        = set(string)
-  default     = []
-}
-
-variable "role_mappings" {
-  description = "A map of all role mappings to create."
-  type        = map(any)
-  default     = {}
-}
-
-variable "role_mapping_files" {
-  description = "A set of all role mapping files to create."
-  type        = set(string)
-  default     = []
-}
-
 variable "tags" {
   description = "A map of tags to add to all resources."
   type        = map(string)
@@ -227,5 +167,20 @@ variable "ebs_volume_type" {
 
 variable "ebs_iops" {
   type    = number
+  default = null
+}
+
+variable "log_publishing_options_enable" {
+  type    = bool
+  default = null
+}
+
+variable "log_publishing_options_cloudwatch_log_group_arn" {
+  type    = string
+  default = null
+}
+
+variable "log_publishing_options_log_type" {
+  type    = string
   default = null
 }

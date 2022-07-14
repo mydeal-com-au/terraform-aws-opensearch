@@ -5,21 +5,7 @@ resource "aws_iam_service_linked_role" "es" {
   aws_service_name = "es.amazonaws.com"
 }
 
-resource "aws_security_group" "es" {
-  name        = "${var.vpc_id}-elasticsearch-${var.cluster_name}"
-  description = "Managed by Terraform"
-  vpc_id      = data.aws_vpc.selected.id
 
-  ingress {
-    from_port = 443
-    to_port   = 443
-    protocol  = "tcp"
-
-    cidr_blocks = [
-      data.aws_vpc.selected.cidr_block,
-    ]
-  }
-}
 
 resource "aws_elasticsearch_domain" "opensearch" {
   domain_name           = var.cluster_name

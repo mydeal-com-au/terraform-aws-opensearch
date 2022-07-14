@@ -184,3 +184,29 @@ variable "log_publishing_options_log_type" {
   type    = string
   default = null
 }
+
+variable "allow_security_group_ids" {
+  type = list(object({
+    name              = string
+    description       = string
+    security_group_id = string
+    from_port         = number
+    to_port           = number
+    protocol          = string
+  }))
+  description = "List of Security Group IDs to allow connection to this Cluster"
+  default     = []
+}
+
+variable "allow_cidrs" {
+  type = list(object({
+    name              = string
+    description       = string
+    cidr              = list(string)
+    from_port         = number
+    to_port           = number
+    protocol          = string
+  }))
+  description = "List of CIDR to allow connection to this Cluster"
+  default     = []
+}

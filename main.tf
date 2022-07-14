@@ -91,6 +91,12 @@ resource "aws_elasticsearch_domain" "opensearch" {
     iops        = var.ebs_iops
   }
 
+  log_publishing_options {
+    enabled                   = var.log_publishing_options_enable
+    cloudwatch_log_group_arn  = var.log_publishing_options_cloudwatch_log_group_arn
+    log_type                  = var.log_publishing_options_log_type
+  }
+
   tags = var.tags
 
   depends_on = [aws_iam_service_linked_role.es]

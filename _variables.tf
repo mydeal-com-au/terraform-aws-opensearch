@@ -116,6 +116,12 @@ variable "saml_roles_key" {
   default     = ""
 }
 
+variable "enable_saml_options" {
+  description = "Enable or not saml options"
+  type        = string
+  default     = true
+}
+
 variable "saml_entity_id" {
   description = "The unique Entity ID of the application in SAML Identity Provider."
   type        = string
@@ -209,4 +215,14 @@ variable "allow_cidrs" {
   }))
   description = "List of CIDR to allow connection to this Cluster"
   default     = []
+}
+
+variable "log_publishing_options" {
+  description = "A list of maps containing log publishing options."
+  type = list(object({
+    enable                  = bool
+    cloudwatch_log_group_arn = string
+    log_type                = string
+  }))
+  default = []
 }

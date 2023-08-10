@@ -92,6 +92,8 @@ Here is a working example of using this Terraform module:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| allow\_cidrs | List of CIDR to allow connection to this Cluster | <pre>list(object({<br>    name        = string<br>    description = string<br>    cidr        = list(string)<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>  }))</pre> | `[]` | no |
+| allow\_security\_group\_ids | List of Security Group IDs to allow connection to this Cluster | <pre>list(object({<br>    name              = string<br>    description       = string<br>    security_group_id = string<br>    from_port         = number<br>    to_port           = number<br>    protocol          = string<br>  }))</pre> | `[]` | no |
 | availability\_zones | The number of availability zones for the OpenSearch cluster. Valid values: 1, 2 or 3. | `number` | `1` | no |
 | cluster\_domain | The hosted zone name of the OpenSearch cluster. | `string` | n/a | yes |
 | cluster\_hostname | The hostname name of the OpenSearch cluster. | `string` | n/a | yes |
@@ -102,9 +104,11 @@ Here is a working example of using this Terraform module:
 | ebs\_iops | n/a | `number` | `null` | no |
 | ebs\_volume\_size | n/a | `number` | `10` | no |
 | ebs\_volume\_type | n/a | `string` | `null` | no |
+| enable\_saml\_options | Enable or not saml options | `string` | `true` | no |
 | encrypt\_kms\_key\_id | The KMS key ID to encrypt the OpenSearch cluster with. If not specified, then it defaults to using the AWS OpenSearch Service KMS key. | `string` | `""` | no |
 | hot\_instance\_count | The number of dedicated hot nodes in the cluster. | `number` | `1` | no |
 | hot\_instance\_type | The type of EC2 instances to run for each hot node. A list of available instance types can you find at https://aws.amazon.com/en/opensearch-service/pricing/#On-Demand_instance_pricing | `string` | `"r6gd.large.elasticsearch"` | no |
+| log\_publishing\_options | A list of maps containing log publishing options. | <pre>list(object({<br>    enable                   = bool<br>    cloudwatch_log_group_arn = string<br>    log_type                 = string<br>  }))</pre> | `[]` | no |
 | log\_publishing\_options\_cloudwatch\_log\_group\_arn | n/a | `string` | `null` | no |
 | log\_publishing\_options\_enable | n/a | `bool` | `null` | no |
 | log\_publishing\_options\_log\_type | n/a | `string` | `null` | no |

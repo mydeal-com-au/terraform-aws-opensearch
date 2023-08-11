@@ -77,10 +77,14 @@ resource "aws_elasticsearch_domain" "opensearch" {
     iops        = var.ebs_iops
   }
 
-  log_publishing_options {
-    enabled                   = var.log_publishing_options_enable
-    cloudwatch_log_group_arn  = var.log_publishing_options_cloudwatch_log_group_arn
-    log_type                  = var.log_publishing_options_log_type
+  dynamic "log_publishing_options" {
+    for_each = var.log_publishing_options
+
+    content {
+      enabled                  = log_publishing_options.value.enable
+      cloudwatch_log_group_arn = log_publishing_options.value.cloudwatch_log_group_arn
+      log_type                 = log_publishing_options.value.log_type
+    }
   }
 
   tags = var.tags
@@ -89,6 +93,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
 }
 
 resource "aws_elasticsearch_domain_saml_options" "opensearch" {
+  count       = var.enable_saml_options ? 1 : 0
   domain_name = aws_elasticsearch_domain.opensearch.domain_name
 
   saml_options {

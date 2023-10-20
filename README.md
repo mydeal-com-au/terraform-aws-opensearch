@@ -80,13 +80,13 @@ Here is a working example of using this Terraform module:
 | Name | Version |
 |------|---------|
 | terraform | >= 1.0.0 |
-| aws | > 3.0 |
+| aws | > 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | > 3.0 |
+| aws | > 4.0 |
 
 ## Inputs
 

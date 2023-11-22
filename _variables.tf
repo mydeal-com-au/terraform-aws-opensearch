@@ -20,6 +20,12 @@ variable "cluster_hostname" {
   type        = string
 }
 
+variable "advanced_options" {
+  description = "Key-value string pairs to specify advanced configuration options."
+  type        = map(string)
+  default     = null
+}
+
 variable "vpc_id" {
   description = "VPC"
   type        = string

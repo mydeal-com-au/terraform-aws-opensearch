@@ -92,6 +92,8 @@ Here is a working example of using this Terraform module:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| advanced\_security\_options\_enabled | n/a | `bool` | `true` | no |
+| advanced\_security\_options\_internal\_user\_db | n/a | `bool` | `false` | no |
 | allow\_cidrs | List of CIDR to allow connection to this Cluster | <pre>list(object({<br>    name        = string<br>    description = string<br>    cidr        = list(string)<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>  }))</pre> | `[]` | no |
 | allow\_security\_group\_ids | List of Security Group IDs to allow connection to this Cluster | <pre>list(object({<br>    name              = string<br>    description       = string<br>    security_group_id = string<br>    from_port         = number<br>    to_port           = number<br>    protocol          = string<br>  }))</pre> | `[]` | no |
 | availability\_zones | The number of availability zones for the OpenSearch cluster. Valid values: 1, 2 or 3. | `number` | `1` | no |

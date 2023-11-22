@@ -226,3 +226,13 @@ variable "log_publishing_options" {
   }))
   default = []
 }
+
+variable "advanced_security_options_enabled" {
+  type    = bool
+  default = true
+}
+
+variable "advanced_security_options_internal_user_db" {
+  type    = bool
+  default = false
+}

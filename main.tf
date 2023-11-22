@@ -44,8 +44,8 @@ resource "aws_elasticsearch_domain" "opensearch" {
   }
 
   advanced_security_options {
-    enabled                        = true
-    internal_user_database_enabled = false
+    enabled                        = var.advanced_security_options_enabled
+    internal_user_database_enabled = var.advanced_security_options_internal_user_db
 
     master_user_options {
       master_user_arn = (var.master_user_arn != "") ? var.master_user_arn : data.aws_caller_identity.current.arn

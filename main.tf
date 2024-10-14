@@ -76,6 +76,7 @@ resource "aws_elasticsearch_domain" "opensearch" {
     volume_size = var.ebs_volume_size
     volume_type = var.ebs_volume_type
     iops        = var.ebs_iops
+    throughput  = var.ebs_throughput
   }
 
   dynamic "log_publishing_options" {

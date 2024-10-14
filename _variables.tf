@@ -182,6 +182,11 @@ variable "ebs_iops" {
   default = null
 }
 
+variable "ebs_throughput" {
+  type    = number
+  default = null
+}
+
 variable "log_publishing_options_enable" {
   type    = bool
   default = null

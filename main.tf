@@ -9,7 +9,7 @@ resource "aws_iam_service_linked_role" "es" {
 
 resource "aws_elasticsearch_domain" "opensearch" {
   domain_name           = var.cluster_name
-  elasticsearch_version = "OpenSearch_${var.cluster_version}"
+  engine_version        = "OpenSearch_${var.cluster_version}"
   access_policies       = data.aws_iam_policy_document.access_policy.json
   advanced_options      = var.advanced_options
 

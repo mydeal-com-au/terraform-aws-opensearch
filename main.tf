@@ -7,7 +7,7 @@ resource "aws_iam_service_linked_role" "es" {
 
 
 
-resource "aws_elasticsearch_domain" "opensearch" {
+resource "aws_opensearch_domain" "opensearch" {
   domain_name           = var.cluster_name
   engine_version        = "OpenSearch_${var.cluster_version}"
   access_policies       = data.aws_iam_policy_document.access_policy.json
@@ -94,9 +94,9 @@ resource "aws_elasticsearch_domain" "opensearch" {
   depends_on = [aws_iam_service_linked_role.es]
 }
 
-resource "aws_elasticsearch_domain_saml_options" "opensearch" {
+resource "aws_opensearch_domain_saml_options" "opensearch" {
   count       = var.enable_saml_options ? 1 : 0
-  domain_name = aws_elasticsearch_domain.opensearch.domain_name
+  domain_name = aws_opensearch_domain.opensearch.domain_name
 
   saml_options {
     enabled                 = true
@@ -119,5 +119,5 @@ resource "aws_route53_record" "opensearch" {
   type    = "CNAME"
   ttl     = "60"
 
-  records = [aws_elasticsearch_domain.opensearch.endpoint]
+  records = [aws_opensearch_domain.opensearch.endpoint]
 }
